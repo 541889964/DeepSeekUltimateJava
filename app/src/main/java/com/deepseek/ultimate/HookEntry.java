@@ -18,6 +18,7 @@ public class HookEntry implements IXposedHookLoadPackage {
     public void handleLoadPackage(LoadPackageParam lpparam) throws Throwable {
         if (!lpparam.packageName.equals("com.deepseek.chat")) return;
         try {
+            // 官方 API 的参数顺序：类名, 类加载器, 方法名, 参数类型..., 回调
             XposedHelpers.findAndHookMethod("android.app.Activity", lpparam.classLoader, "onResume", new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {

@@ -18,4 +18,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 }
-dependencies {}
+dependencies {
+    // 使用官方依赖，且必须是 compileOnly，不会打包进 APK
+    compileOnly("de.robv.android.xposed:api:82")
+}
